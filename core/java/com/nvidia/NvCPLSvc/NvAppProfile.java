@@ -1,6 +1,5 @@
 package com.nvidia.NvCPLSvc;
 
-import android.net.ProxyInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.SparseArray;
@@ -15,6 +14,7 @@ public class NvAppProfile implements Parcelable {
             return new NvAppProfile[size];
         }
     };
+    public static final String LOCAL_EXCL_LIST = "";
     public final String pkgName;
     public final String pkgVersion;
     public final int typeId;
@@ -41,11 +41,11 @@ public class NvAppProfile implements Parcelable {
     }
 
     private static String encodeNull(String string) {
-        return string != null ? string : ProxyInfo.LOCAL_EXCL_LIST;
+        return string != null ? string : LOCAL_EXCL_LIST;
     }
 
     private static String decodeNull(String string) {
-        return !string.equals(ProxyInfo.LOCAL_EXCL_LIST) ? string : null;
+        return !string.equals(LOCAL_EXCL_LIST) ? string : null;
     }
 
     public int describeContents() {
